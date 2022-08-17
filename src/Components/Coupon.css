@@ -1,0 +1,67 @@
+
+.card {
+  width: 400px;
+  height: 180px;
+  position: relative;
+  box-shadow: 10px;
+}
+
+.main,
+.copy-button {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  align-items: center;
+ 
+}
+.card::after {
+  position: absolute;
+  content: "";
+  height: 40px;
+  right: -20px;
+  border-radius: 40px;
+  z-index: 1;
+  top: 70px;
+  background-color: #F7F8FC;
+  width: 40px;
+}
+
+.card::before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  left: -20px;
+  border-radius: 40px;
+  z-index: 1;
+  top: 70px;
+  background-color: #F7F8FC;
+  width: 40px;
+}
+
+.co-img img {
+  width: 100px;
+  height: 100px;
+}
+.vertical {
+  border-left: 5px dotted black;
+  height: 100px;
+  position: absolute;
+  left: 40%;
+}
+
+
+.copy-button {
+  margin: 12px 0 -5px 0;
+  height: 45px;
+  border-radius: 4px;
+  padding: 0 5px;
+  border: 1px solid #e1e1e1;
+}
+
+.copy-button button {
+  padding: 5px 20px;
+  background-color: #dc143c;
+  color: #fff;
+  border: 1px solid transparent;
+}
+
