@@ -4,7 +4,7 @@ import CategoryInfo from './CategoryInfo';
 import arrow1 from '../assets/arrw1.png';
 import arrow2 from '../assets/arrw2.png';
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
-import AddCategoryModal from '../AddCategoryModal';
+import AddCategoryModal from './AddCategoryModal';
 import { Loader } from './Loader/Loader';
 import axios from '../axios'
 
@@ -75,7 +75,9 @@ class Category extends Component {
                 
           
         })
-        .catch(e=>console.log(`[Categories] ${e}`))
+        .catch(e=>{            
+            this.onError(e.message)
+        })
     }
 
 
