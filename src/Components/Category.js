@@ -79,9 +79,6 @@ class Category extends Component {
             this.onError(e.message)
         })
     }
-
-
-
     componentDidMount(){        
        this.loadData()
        
@@ -102,6 +99,9 @@ class Category extends Component {
                 <thead class="text-xs text-gray-700 uppercase pb-6 bg-colornav">
                     <tr>                                            
                         <th scope="col" class="py-3 px-6">
+                            Serial #
+                        </th>                                            
+                        <th scope="col" class="py-3 px-6">
                             Category Name
                         </th>                                            
                         <th scope="col" class="py-3 px-6">
@@ -112,8 +112,9 @@ class Category extends Component {
 
                 {/* T body  */}
                 {this.state.categories.length > 0 ? 
-                      this.state.categories.map((val) => {                                                   
+                      this.state.categories.map((val, index) => {                                                   
                             return <CategoryInfo
+                                seriaNo ={index+1}
                                 key={val.key}
                                 id={val.key}
                                 name={val.name}    

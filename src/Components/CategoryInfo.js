@@ -38,6 +38,7 @@ function CategoryInfo(props) {
         <Fragment>
             <tbody>
                 <tr class="bg-white border-b  dark:border-gray-700">                  
+                    <td class="py-4 px-6">{props.seriaNo}</td>
                     <td class="py-4 px-6">
                         {name}
                     </td>                  
