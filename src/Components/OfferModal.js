@@ -24,6 +24,7 @@ class OfferModal extends Component {
     }
 
     inputChangeHandler = (e) => {
+        const UpdatedformData = {...this.state.formData}
         if(e.target.type == "file"){
             if (!e.target.files[0]) return;
                 this.setState({
@@ -47,19 +48,26 @@ class OfferModal extends Component {
                         })
                 },
                 () => {
-                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    let updatedFormData = {...this.state.formData}
-                    updatedFormData["imgURL"] = downloadURL
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {                    
+                    UpdatedformData["imgURL"] = downloadURL
                     this.setState({
-                        formData: updatedFormData,
+                        formData: UpdatedformData,
                         uploading: false,
                         uploaded: true
                     })                                                              
                 });
                 }
             )
-        }else{
-            const UpdatedformData = {...this.state.formData}
+        }
+        else if(e.target.name == "price"){
+            if(e.target.value.length > e.target.maxLength){
+                e.target.value = e.target.value.slice(0, e.target.maxLength)
+                UpdatedformData[e.target.name] = parseInt(e.target.value.slice(0, e.target.maxLength))
+            }else{
+                UpdatedformData[e.target.name] = parseInt(e.target.value)
+            }
+        }
+        else{            
             UpdatedformData[e.target.name] = e.target.value
             this.setState({
                 formData: UpdatedformData
@@ -84,7 +92,7 @@ class OfferModal extends Component {
             craetedAt: today 
         }
         axios.post("/offers.json", data)
-        .then(response => {            
+        .then(() => {            
             this.props.success("Offer added!")
             this.props.close(false)
             this.setState({
@@ -125,16 +133,16 @@ class OfferModal extends Component {
                 <input 
                     type="number" 
                     className="bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5" 
-                    placeholder="Price " 
+                    placeholder="Discount Percentage (i-e 0-99)" 
                     name="price"
+                    maxLength={2}
                     onChange={(e) => this.inputChangeHandler(e)}
                     required />
             </div>
             <div>
                 <input 
                     type="file" 
-                    className="bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5" 
-                    placeholder="Address" 
+                    className="bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5"                     
                     onChange={(e) => this.inputChangeHandler(e)}                                            
                     required />
             </div>

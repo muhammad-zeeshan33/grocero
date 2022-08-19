@@ -1,6 +1,5 @@
 import React, { Component, useState } from 'react';
 import OfferCard from './OfferCard';
-import Offerdata from './OfferData';
 import OfferModal from './OfferModal';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { ToastContainer, toast } from 'react-toastify';
