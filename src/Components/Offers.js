@@ -26,14 +26,15 @@ class Offers extends Component {
     
 
     toggleModalHandler = () => {
+        const doesOpen = this.state.open;
         this.setState({
-            open: !this.state.open
+            open: !doesOpen
         })
     }
 
 
 
-    loadData = () => {
+    loadData = () => {        
         axios.get('/offers.json')
         .then(res => {
             if(res.data !== null){  
@@ -63,15 +64,15 @@ class Offers extends Component {
         })
     }
 
-    componentDidMount(){
+    componentDidMount(){        
         this.setState({
             loading: true
         })
         this.loadData()        
     }
 
-    componentDidUpdate(_, prevState){
-        if(this.state.offers !== prevState.offers){
+    componentDidUpdate(_, prevState){            
+        if(JSON.stringify(this.state) !== JSON.stringify(prevState)){
             this.loadData()
         }
     }
@@ -123,12 +124,7 @@ class Offers extends Component {
                         />}
                     </div>
                 </div>                
-                    {pageContent}  
-
-
-                    
-
-                             
+                    {pageContent}                               
             </>
         );
     }

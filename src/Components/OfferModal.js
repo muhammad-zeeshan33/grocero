@@ -68,11 +68,11 @@ class OfferModal extends Component {
             }
         }
         else{            
-            UpdatedformData[e.target.name] = e.target.value
-            this.setState({
-                formData: UpdatedformData
-            })                        
+            UpdatedformData[e.target.name] = e.target.value                                   
         }
+        this.setState({
+            formData: UpdatedformData
+        }) 
         
     }
 

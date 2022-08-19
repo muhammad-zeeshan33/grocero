@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 import Auxilary from '../hoc/Auxilary';
 import { storage } from '../firebase/firebase';
 import { ref, deleteObject } from "firebase/storage";
 
 import axios from '../axios'
+
+
 
 const OfferCard = (props) => {
 
@@ -18,12 +20,13 @@ const OfferCard = (props) => {
     const deleteModalToggler = () => {
         setDeleteModel(!deleteModal)
     }
+    
 
     const handleMouseLeave = () => {
         setishovering(false)
     }
 
-    const deleteProductHandler = (id) => {
+    const deleteOfferHandler = (id) => {
         setLoading(true)
         // removing picture of offer from firebase storage before deleting offer 
         let fileRef = ref(storage, props.img);
@@ -34,14 +37,14 @@ const OfferCard = (props) => {
         });
 
         // removing offer object from firebase
-        axios.delete(`/offers/${props.id}.json`)        
+        axios.delete(`/offers/${id}.json`)        
         .then(()=>{
             props.success("Offer removed")
-            setLoading(true)
+            setLoading(false)
         })
         .catch(e=>{
             console.log(e)
-            setLoading(true)
+            setLoading(false)
         })
 
     }
@@ -74,7 +77,7 @@ const OfferCard = (props) => {
                         <div class="flex flex-col items-center pb-10 text-colortxt text-center">                                                    
                             <h5 class="mb-1 text-xl font-medium mt-3">Are you sure you want to delete {props.title}?</h5>   
                             <div className='d-flex'>
-                                <button onClick={() => deleteProductHandler(props.id)} disabled={loading} className="text-red-600 bg-white mt-7  font-medium rounded-lg border border-red-600 text-sm px-4 py-2 ml-2 ">{loading ? "Deleting..." : "Yes Delete"}</button>
+                                <button onClick={() => deleteOfferHandler(props.id)} disabled={loading} className="text-red-600 bg-white mt-7  font-medium rounded-lg border border-red-600 text-sm px-4 py-2 ml-2 ">{loading ? "Deleting..." : "Yes Delete"}</button>
                                 <button onClick={deleteModalToggler} disabled={loading} class="text-red-700 bg-white  border border-red-700 font-medium rounded-lg text-sm px-5 ml-3 py-2.5  mb-2">Discard</button> 
                             </div>         
                         </div>                            
