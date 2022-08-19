@@ -146,8 +146,8 @@ class OfferModal extends Component {
                     onChange={(e) => this.inputChangeHandler(e)}                                            
                     required />
             </div>
-            {this.state.uploading && <small class="text-blue-400 mb-3">Uploading {this.state.progresspercent}% </small>}
-            {this.state.uploaded && <small class="text-blue-400 mb-3"><CheckCircle/> Uploaded  </small>}
+            {this.state.uploading && <small className="text-blue-400 mb-3">Uploading {this.state.progresspercent}% </small>}
+            {this.state.uploaded && <small className="text-blue-400 mb-3"><CheckCircle/> Uploaded  </small>}
             <div>
                 <textarea 
                     className='outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]'                                             
@@ -170,8 +170,8 @@ class OfferModal extends Component {
             <div >    
             </div>        
             <div className='flex justify-around'>
-                <button type="submit" disabled={this.state.uploading} class="text-white bg-[#363740] border  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">{this.state.uploading ? "Waiting for upload..." : "Save"}</button>
-                <button type="button" onClick = {() => this.props.close(false)} class="text-red-700 bg-white  border border-red-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Discard</button>
+                <button type="submit" disabled={this.state.uploading} className="text-white bg-[#363740] border  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">{this.state.uploading ? "Waiting for upload..." : "Save"}</button>
+                <button type="button" onClick = {() => this.props.close(false)} className="text-red-700 bg-white  border border-red-700 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Discard</button>
             </div>
         </form>
         )

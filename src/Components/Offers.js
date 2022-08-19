@@ -87,6 +87,7 @@ class Offers extends Component {
                         {this.state.offers.map((val) => {                            
                             return <OfferCard
                                 success = {this.onSuccess}
+                                refresh = {this.loadData}
                                 key={val.key}
                                 id={val.key}
                                 title={val.title}
@@ -99,9 +100,9 @@ class Offers extends Component {
                 )
             }else{
                 pageContent = (
-                    <div class="d-flex justify-center text-center">
+                    <div className="d-flex justify-center text-center">
                         <img src={noProducts} style={{width: "400px", height: "300px", borderRadius: "50%", marginLeft: "33%"}}></img>
-                        <h1 class="text-3xl mt-3">No offers found, Start adding offers</h1>
+                        <h1 className="text-3xl mt-3">No offers found, Start adding offers</h1>
                     </div>
                 )
             }
@@ -116,7 +117,7 @@ class Offers extends Component {
                     </label>
                     <hr />
                     <div className="flex justify-end">
-                        <button onClick={this.toggleModalHandler} type="button" class="text-[#2E2E2E] bg-[#F27AAC]  font-medium rounded-lg text-sm px-3 py-2  space-x-1 m-5 mr-10 " ><AddCircleOutlineIcon /><label>Add new</label></button>
+                        <button onClick={this.toggleModalHandler} type="button" className="text-[#2E2E2E] bg-[#F27AAC]  font-medium rounded-lg text-sm px-3 py-2  space-x-1 m-5 mr-10 " ><AddCircleOutlineIcon /><label>Add new</label></button>
                         {this.state.open && <OfferModal
                             success = {this.onSuccess}
                             error = {this.onError}
