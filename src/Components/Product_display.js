@@ -3,7 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckCircle from '@mui/icons-material/CheckCircle'
 import Moment from 'react-moment';
 import {storage} from '../firebase/firebase'
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytesResumable, deleteObject } from "firebase/storage";
 import { Loader } from "./Loader/Loader";
 
 
@@ -89,6 +89,16 @@ export default function Product_display(props) {
             imgURL: imgUrl || props.img,            
         }
 
+        // deleting old image of the product before updating new image
+        if(imgUrl){
+            let fileRef = ref(storage, props.img);
+            deleteObject(fileRef)
+            .then(() => {})
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+        // 
         axios.patch(`/products/${props.id}.json`, data)
         .then(res=>{
             props.success("Product information updated")
