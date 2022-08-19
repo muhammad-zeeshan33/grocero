@@ -26,7 +26,7 @@ function App() {
         <div className='w-full'>
           <Router>
             <Routes>
-            <Route exact path='/' element={<Dashboard />} />
+              <Route exact path='/' element={<Dashboard />} />
               <Route exact path='/Dashboard' element={<Dashboard />} />
               <Route exact path='/Products' element={<Product />} />
               <Route exact path='/Category' element={<Category />} />

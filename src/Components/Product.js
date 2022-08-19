@@ -66,7 +66,6 @@ function Product() {
       
     },[])
 
-
     // LOADING DATA 
     const loadData = () => {
         axios.get('/products.json')

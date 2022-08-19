@@ -117,8 +117,14 @@ export default function Product_display(props) {
 
     const deleteProductHandler = (id) => {
         setLoading(true)
+        let fileRef = ref(storage, props.img);
+        deleteObject(fileRef)
+        .then(() => {})
+        .catch((err) => {
+            console.log(err);            
+        });
         axios.delete(`/products/${id}.json`)
-        .then(res=>{
+        .then(()=>{
             props.success("Product deleted!")
             props.loadData()
             setDeleteModel(false)

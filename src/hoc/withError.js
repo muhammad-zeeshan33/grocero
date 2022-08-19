@@ -2,27 +2,29 @@ import React, { Component } from 'react'
 import Auxilary from './Auxilary'
 import noInternet from '../Components/assets/internet-error.png' 
 
-export const withError = (WrappedComponent, axios) => {
-    let show = true
+export const withError = (WrappedComponent, axios) => {    
     return class extends Component{
         state = {
             error: null
         }
         componentDidMount(){
-            axios.interceptors.request.use(req => {
+           this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({
                     error: null
                 })
                 return req;
             })
-            axios.interceptors.response.use(null, error=>{
+            this.resInterceptor = axios.interceptors.response.use(null, error=>{
                 this.setState({
                     error: error
                 })
             })
-        }
-
+        }     
         
+        // componentWillUnmount(){
+        //     axios.interceptors.request.eject(this.reqInterceptor)
+        //     axios.interceptors.response.eject(this.resInterceptor)
+        // }
         render(){
             return(
                 <Auxilary>
@@ -33,8 +35,7 @@ export const withError = (WrappedComponent, axios) => {
                                 <h3 class="text-2xl mt-3">{this.state.error ? this.state.error.message : "SOMETHING WENT WRONG"}</h3>                            
                             </div>                            
                         </div>
-                    </div>
-    
+                    </div>    
                     <WrappedComponent {...this.props}/>
             </Auxilary>
             )
