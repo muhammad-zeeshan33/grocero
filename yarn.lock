@@ -5080,6 +5080,11 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
+fast-push@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/fast-push/-/fast-push-1.0.1.tgz#ba5ee8ee47247e971c85e552815bde92fe3f0381"
+  integrity sha512-M/6LNlFyd6GnqN/w70oSjGPJUava5j2gZ7MvvBZAUKsR1LcjKdNija+CVCnAZVmBqzL8Qafb0RrlxKXAu9jISg==
+
 fastq@^1.6.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.13.0.tgz#616760f88a7526bdfc596b7cab8c18938c36b98c"
