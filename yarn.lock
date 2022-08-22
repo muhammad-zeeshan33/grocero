@@ -2237,6 +2237,14 @@
   dependencies:
     "@babel/runtime" "^7.6.2"
 
+"@react-firebase/auth@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@react-firebase/auth/-/auth-0.2.10.tgz#1f58a6c9dd7f89ec1ca03d0620929f1a6bac9c82"
+  integrity sha512-qeRv96HI5Y3nPRwO3Zi4QnYYeJstVu8lDih+QQbTeuadUUngchGw5Tp7dseOY5u3q/+e+kF2hV7BUkfYt7FS8g==
+  dependencies:
+    lodash.get "^4.4.2"
+    render-and-add-props "^0.5.0"
+
 "@restart/hooks@^0.4.6", "@restart/hooks@^0.4.7":
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.4.7.tgz#d79ca6472c01ce04389fc73d4a79af1b5e33cd39"
@@ -5182,6 +5190,11 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
+firebase-token-generator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/firebase-token-generator/-/firebase-token-generator-2.0.0.tgz#9767d759ec13abdc99ba115fd5ea99d8b93d1206"
+  integrity sha512-EX/Rw6C0NLF6StuszW9Pn4zGUU8dw0UdHY6u8zP5t/CsbYRwWVh0CwN6INFE5U4IizZtgqbWQhcAQNkBtNkyfQ==
+
 firebase@^9.9.2:
   version "9.9.2"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-9.9.2.tgz#00cbf5912a27b233875626f5e7346ecc582ddabb"
@@ -6803,6 +6816,11 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
+
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -8521,6 +8539,11 @@ relateurl@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==
+
+render-and-add-props@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/render-and-add-props/-/render-and-add-props-0.5.0.tgz#79e35b2251936ec187188322826e56401c2ef70b"
+  integrity sha512-jIVQsWxGDHwpMcI0d9w6OxF/GCtwL02Lyqk8aGjyF6LyR9GPLY+1ONwPjs6kbQ2d6gTApWk8aprZkBli0tpG/w==
 
 renderkid@^3.0.0:
   version "3.0.0"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthContext from '../../contexts/authContext'
+import {Link} from 'react-router-dom'
 class Login extends Component  {   
 
     state = {
@@ -11,6 +12,17 @@ class Login extends Component  {
     }
 
     static contextType = AuthContext
+
+    // Check if the user was previously logged in
+    checkExistingSession = () => {
+        const token = localStorage.getItem("token");
+        if(token){
+            this.context.autoLogin(token)
+        }
+    }
+
+      
+
 
     login = (e) => {
         e.preventDefault()        
@@ -37,6 +49,7 @@ class Login extends Component  {
     }
 
     render(){
+        this.checkExistingSession()        
         return (
            
                 <div className='flex justify-center mt-[150px]'>
@@ -68,7 +81,7 @@ class Login extends Component  {
                             <p className="text-red-700">{this.context.error && "Email or password is wrong"}</p>                            
                             <div class="flex items-start">
         
-                                <a href="/Forgetpassword" class=" text-md text-blue-700 hover:underline dark:text-blue-500">Forget Password</a>
+                                <Link to="/forget-password" class=" text-md text-blue-700 hover:underline dark:text-blue-500">Forget Password</Link>
                             </div>
                             <button                                 
                                 type="submit" 

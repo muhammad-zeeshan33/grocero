@@ -51,12 +51,10 @@ function Navbar() {
 
                         </div>
                         <a href='/'>
-                            <button type="button" class="text-[#2E2E2E] bg-[#F27AAC] mt-7  font-medium rounded-lg text-sm px-5 py-2.5 ml-[50px] " >Logout</button>
+                            <button type="button" onClick={()=> localStorage.removeItem("token")} class="text-[#2E2E2E] bg-[#F27AAC] mt-7  font-medium rounded-lg text-sm px-5 py-2.5 ml-[50px] " >Logout</button>
                         </a>
                     </ul>
                 </div>
-
-
             </div>
 
         </>

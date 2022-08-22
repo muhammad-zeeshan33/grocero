@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import Auxilary from './hoc/Auxilary';
 import AuthContext from './contexts/authContext'
 import BaseApp from './app/BaseApp';
+import * as firebase from 'firebase/auth'
 import axios from "axios"
 class App extends Component {
     
+  
   
   state = {  
     authenticated: false,
@@ -12,23 +14,31 @@ class App extends Component {
     success: false,
     error: false           
   }
+
+// This method checks if the user is logged and reLogin again in case he refresh the page
+  autoLogin = (token) => {
+
+    this.setState({
+      token: token,
+      authenticated: true
+    })
+  }
   
+
+  // Manual Login 
   loginHandler = (credentials) => {
     this.setState({
       error: false,      
     })
-    // const credentials ={
-    //   email, password
-    // }
     
     axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB7OGeB3UJunGWYFMM7GrxseZTyimpMgAI", credentials)
-    .then(res=>{
-      console.log(res)
+    .then(res=>{            
+      localStorage.setItem("token", res.data.idToken)
       this.setState({
         success: true, 
         error: false,       
         authenticated: true,        
-        token: "412313124dcasda"
+        token: res.data.idToken
       })
 
     })
@@ -37,6 +47,7 @@ class App extends Component {
         error: true,        
       })
       console.log(err)
+      
     })
     
   }
@@ -52,10 +63,11 @@ class App extends Component {
             token: this.state.token, 
             login: this.loginHandler,
             success: this.state.success,
-            error: this.state.error
+            error: this.state.error,
+            autoLogin: this.autoLogin
             }}>
         <Auxilary>
-          <BaseApp loading={this.state.login}/>
+          <BaseApp />
         </Auxilary>      
       </AuthContext.Provider>
     );

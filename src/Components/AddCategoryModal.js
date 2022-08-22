@@ -2,6 +2,8 @@ import React from 'react';
 import axios from '../axios';
 import { Loader } from './Loader/Loader';
 
+
+
 const AddCategoryModal = ({close, success, error}) => {
 
     const [name, setName] = React.useState({
@@ -10,7 +12,7 @@ const AddCategoryModal = ({close, success, error}) => {
     });    
     const [loading, setLoading] = React.useState(false)
 
-    
+    const token = localStorage.getItem("token")
 
     const submitHandler = async() => {
         try{
@@ -18,7 +20,7 @@ const AddCategoryModal = ({close, success, error}) => {
             const data = {
                 name: name.name
             }
-            const response = await axios.post('/categories.json', data)        
+            const response = await axios.post(`/categories.json`, data)        
             if(response.status == 200 || response.data.length){
                 setLoading(false)
                 success("Category Created Successfully")

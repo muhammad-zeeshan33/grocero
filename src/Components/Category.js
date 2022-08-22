@@ -7,6 +7,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
 import AddCategoryModal from './AddCategoryModal';
 import { Loader } from './Loader/Loader';
 import axios from '../axios'
+import authContext from '../contexts/authContext';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,9 +21,16 @@ class Category extends Component {
         dis: false,
         open: false,
         categories: null,
-        loading: false
+        loading: false,
+        token: localStorage.getItem('token')
+        
 
     }
+
+    static contextType = authContext
+  
+
+    
 
     onSuccess = (msg) => toast.success(msg);
     onError = (msg) => toast.error(msg);
@@ -41,7 +49,7 @@ class Category extends Component {
         })        
     }
 
-    onDeleteCategory = (id) => {       
+    onDeleteCategory = (id) => {             
         axios.delete(`/categories/${id}.json`)
         .then(res=>
             {                
@@ -52,8 +60,8 @@ class Category extends Component {
         
     }
 
-    loadData = () => {
-        axios.get('/categories.json')
+    loadData = () => {                        
+        axios.get(`/categories.json`)
         .then(res=>{
             if(res.data !== null){  
                 let keys = Object.keys(res.data)

@@ -14,6 +14,7 @@ import Category from '../Components/Category';
 import Login from '../Components/Auth/Login';
 import Auxilary from '../hoc/Auxilary';
 import authContext from '../contexts/authContext';
+import Forgetpassword from '../Components/Forgetpassword';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -30,7 +31,13 @@ const BaseApp = (props) => {
 //     }
 
   let pageContent = (
-    <Login />
+    <Router>
+      
+      <Routes>
+        <Route exact path='/forget-password' element={<Forgetpassword />} />
+        <Route exact path='/' element={<Login />}/>
+      </Routes>
+    </Router>
   )
   if(auth.authenticated){
     pageContent = (
