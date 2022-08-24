@@ -18,8 +18,7 @@ function Orderdisplay(props) {
 
 
     const handleclick = (a) => {
-        setmodel(!model)
-        console.log('clicked')
+        setmodel(!model)        
         console.log(a)
 
 

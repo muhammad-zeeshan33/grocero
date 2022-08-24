@@ -21,7 +21,7 @@ class CoupnsModal extends Component {
 
     inputChangeHandler = (e) => {
         const UpdatedformData = {...this.state.formData}
-        if(e.target.type == "file"){
+        if(e.target.type === "file"){
             if (!e.target.files[0]) return;
                 this.setState({
                     uploading: true
@@ -55,8 +55,7 @@ class CoupnsModal extends Component {
                 }
             )
         }
-        else if(e.target.name == "discountPtg"){
-            console.log(e.target.name)
+        else if(e.target.name === "discountPtg"){            
             if(e.target.value.length > e.target.maxLength){
                 e.target.value = e.target.value.slice(0, e.target.maxLength)
                 UpdatedformData[e.target.name] = parseInt(e.target.value.slice(0, e.target.maxLength))

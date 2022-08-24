@@ -29,8 +29,7 @@ class Login extends Component  {
         this.setState({
             loading: true
         })
-        // /loggin in  
-        console.log(this.state.credentials)       
+        // /loggin in              
         this.context.login(this.state.credentials)        
         setTimeout(()=>{
             this.setState({

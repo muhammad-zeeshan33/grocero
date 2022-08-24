@@ -10,9 +10,7 @@ const AddCategoryModal = ({close, success, error}) => {
         name: "",
         isValid: false
     });    
-    const [loading, setLoading] = React.useState(false)
-
-    const token = localStorage.getItem("token")
+    const [loading, setLoading] = React.useState(false)    
 
     const submitHandler = async() => {
         try{
@@ -21,7 +19,7 @@ const AddCategoryModal = ({close, success, error}) => {
                 name: name.name
             }
             const response = await axios.post(`/categories.json`, data)        
-            if(response.status == 200 || response.data.length){
+            if(response.status === 200 || response.data.length){
                 setLoading(false)
                 success("Category Created Successfully")
                 close(false)
@@ -36,8 +34,7 @@ const AddCategoryModal = ({close, success, error}) => {
 
     const nameChangeHandler = (e) => {
         const validate = e.target.value.length > 0;
-        
-        console.log(validate);
+                
         setName({
             name: e.target.value, 
             isValid: validate

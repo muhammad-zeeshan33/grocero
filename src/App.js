@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Auxilary from './hoc/Auxilary';
 import AuthContext from './contexts/authContext'
 import BaseApp from './app/BaseApp';
-import * as firebase from 'firebase/auth'
 import axios from "axios"
 class App extends Component {
     
@@ -31,7 +30,7 @@ class App extends Component {
       error: false,      
     })
     
-    axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB7OGeB3UJunGWYFMM7GrxseZTyimpMgAI", credentials)
+    axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBHFxB1lu0npq9fe7SqQeYl8NhKdeIZvCo", credentials)
     .then(res=>{            
       localStorage.setItem("token", res.data.idToken)
       this.setState({

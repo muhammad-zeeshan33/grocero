@@ -9,8 +9,7 @@ import { Loader } from "./Loader/Loader";
 
 import axios from '../axios'
 export default function Product_display(props) {
-
-    const [img, setImg] = useState(null)
+    
     const [imgUrl, setImgUrl] = useState(null);
     const [progresspercent, setProgresspercent] = useState(0);
     const [uploading, setUploading] = useState(false)
@@ -29,9 +28,7 @@ export default function Product_display(props) {
     // got inputchange reference
 
     const handleclick = (a) => {
-        setmodel(!model)
-        console.log('clicked')
-        console.log(a)
+        setmodel(!model)                
     }
 
     const deleteModalToggler = () => {
@@ -41,7 +38,7 @@ export default function Product_display(props) {
     // INPUT CHANGE HANDLER
     const inputChangeHandler = (e) => {        
         const updatedFormData = {...formData}
-        if(e.target.name == "price"){
+        if(e.target.name === "price"){
             updatedFormData[e.target.name] = parseInt(e.target.value)    
         }else{
             updatedFormData[e.target.name] = e.target.value
@@ -51,8 +48,7 @@ export default function Product_display(props) {
     
 
      // uploading image to firebase
-     const imgChangeHandler = (e) =>{            
-        setImg(e.target.files[0]);
+     const imgChangeHandler = (e) =>{                    
         if (!e.target.files[0]) return;
         setUploading(true)        
         const storageRef = ref(storage, `productImages/${e.target.files[0].name}`);
@@ -61,8 +57,7 @@ export default function Product_display(props) {
         uploadTask.on("state_changed",
         (snapshot) => {
           const progress =
-            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            console.log(progress)
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);            
             setProgresspercent(progress)
         },
         (error) => {
@@ -71,8 +66,7 @@ export default function Product_display(props) {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImgUrl(downloadURL)   
-            console.log(downloadURL)         
+            setImgUrl(downloadURL)                     
             setUploading(false)
             setUploaded(true)
           });
@@ -104,8 +98,7 @@ export default function Product_display(props) {
             props.success("Product information updated")
             setmodel(!model)
             setLoading(false)
-            props.loadData()
-            console.log(res)
+            props.loadData()            
         })
         .catch(e=>{
             props.error(e.message)

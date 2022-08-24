@@ -6,7 +6,6 @@ import Product_display from "./Product_display";
 import CheckCircle from '@mui/icons-material/CheckCircle'
 import {storage} from '../firebase/firebase'
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Loader } from "./Loader/Loader";
@@ -18,7 +17,7 @@ import axios from '../axios'
 
 function Product() {
     // hooks
-    const [img, setImg] = useState(null)
+
     const [imgUrl, setImgUrl] = useState(null);
     const [progresspercent, setProgresspercent] = useState(0);
     const [uploading, setUploading] = useState(false)
@@ -91,7 +90,7 @@ function Product() {
     // INPUT CHANGE HANDLER
     const inputChangeHandler = (e) => {        
         const updatedFormData = {...formData}
-        if(e.target.name == "price"){
+        if(e.target.name === "price"){
             updatedFormData[e.target.name] = parseInt(e.target.value)    
         }else{
             updatedFormData[e.target.name] = e.target.value
@@ -102,8 +101,7 @@ function Product() {
 
 
     // uploading image to firebase
-    const imgChangeHandler = (e) =>{            
-        setImg(e.target.files[0]);
+    const imgChangeHandler = (e) =>{                    
         if (!e.target.files[0]) return;
         setUploading(true)        
         const storageRef = ref(storage, `productImages/${e.target.files[0].name}`);
@@ -112,8 +110,7 @@ function Product() {
         uploadTask.on("state_changed",
         (snapshot) => {
           const progress =
-            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            console.log(progress)
+            Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);            
             setProgresspercent(progress)
         },
         (error) => {
@@ -122,8 +119,7 @@ function Product() {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImgUrl(downloadURL)   
-            console.log(downloadURL)         
+            setImgUrl(downloadURL)                     
             setUploading(false)
             setUploaded(true)
           });
@@ -176,9 +172,7 @@ function Product() {
   
     // MODAL TOGGLER
     const handleclick = (a) => {
-        setmodel(!model)
-        console.log('clicked')
-        console.log(a)
+        setmodel(!model)        
 
     }
     
@@ -299,7 +293,7 @@ function Product() {
             }else{
                 productList = (
                     <div class="d-flex justify-center text-center">
-                        <img src={noProducts} style={{width: "400px", height: "300px", borderRadius: "50%", marginLeft: "33%"}}></img>
+                        <img src={noProducts} style={{width: "400px", height: "300px", borderRadius: "50%", marginLeft: "33%"}} alt="Product "></img>
                         <h1 class="text-3xl mt-3">No products found, Start Adding Products</h1>
                     </div>
                 )
