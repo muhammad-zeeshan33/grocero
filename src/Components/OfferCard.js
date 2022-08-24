@@ -67,7 +67,7 @@ const OfferCard = (props) => {
                             <p className="font-normal "><h5 className="inline-flex mb-2 text-4xl font-bold ">{props.price}%</h5> {props.type} </p>
                             <h5 className="text-2xl font-bold tracking-tight ">Discount</h5>
                         </div>
-                        <img src={props.img} className="object-cover m-2  " alt="" />
+                        <img src={props.img} className="object-cover m-2  " alt="" style={{width: "150px"}} />
                     </div>
                 </div>
             

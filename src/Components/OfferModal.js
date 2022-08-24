@@ -147,12 +147,7 @@ class OfferModal extends Component {
                     required />
             </div>
             {this.state.uploading && <small className="text-blue-400 mb-3">Uploading {this.state.progresspercent}% </small>}
-            {this.state.uploaded && <small className="text-blue-400 mb-3"><CheckCircle/> Uploaded  </small>}
-            <div>
-                <textarea 
-                    className='outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]'                                             
-                ></textarea>
-            </div>
+            {this.state.uploaded && <small className="text-blue-400 mb-3"><CheckCircle/> Uploaded  </small>}            
             <div className='flex justify-evenly items-center'>
                 <label>Type of Discount:</label>
                 <select 

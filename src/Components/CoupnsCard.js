@@ -74,7 +74,7 @@ const CoupnsCard = (props) => {
                     <div class="co-img rounded-full border border-[#f5aac8] bg-[#f5aac8] ">
                         <img
                             src={props.img}
-                            alt="Product"
+                            alt=""                            
                         />
                     </div>
                     <div class="vertical"></div>
