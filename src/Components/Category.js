@@ -7,6 +7,8 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddCategoryModal from "./AddCategoryModal";
 import { Loader } from "./Loader/Loader";
 import axios from "../axios";
+import noProducts from "./assets/no-products.gif";
+
 import authContext from "../contexts/authContext";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -93,44 +95,72 @@ class Category extends Component {
       </div>
     );
     if (this.state.categories) {
-      table = (
-        <table class='w-full text-sm text-left text-gray '>
-          <thead class='text-xs text-gray-700 uppercase pb-6 text-[#fff] bg-[#333]'>
-            <tr>
-              <th scope='col' class='py-3 px-6'>
-                Serial #
-              </th>
-              <th scope='col' class='py-3 px-6'>
-                Category Name
-              </th>
-              <th scope='col' class='py-3 px-6'>
-                Actions
-              </th>
-            </tr>
-          </thead>
+      if (this.state.categories.length > 0) {
+        table = (
+          <div className={this.state.dis ? "hidden" : "m-5 bg-white"}>
+            <div class='overflow-x-hidden overflow-y-hidden relative shadow-md sm:rounded-lg'>
+              <table class='w-full text-sm text-left text-gray '>
+                <thead class='text-xs text-gray-700 uppercase pb-6 text-[#fff] bg-[#333]'>
+                  <tr>
+                    <th scope='col' class='py-3 px-6'>
+                      Serial #
+                    </th>
+                    <th scope='col' class='py-3 px-6'>
+                      Category Name
+                    </th>
+                    <th scope='col' class='py-3 px-6'>
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
 
-          {/* T body  */}
-          {this.state.categories.length > 0 ? (
-            this.state.categories.map((val, index) => {
-              return (
-                <CategoryInfo
-                  seriaNo={index + 1}
-                  key={val.key}
-                  id={val.key}
-                  name={val.name}
-                  loading={this.state.loading}
-                  onDelete={this.onDeleteCategory}
-                  click={this.handleclick}
-                />
-              );
-            })
-          ) : (
-            <tbody>
-              <p class='text-center my-5'>Start adding some categories</p>
-            </tbody>
-          )}
-        </table>
-      );
+                {/* T body  */}
+                {this.state.categories.map((val, index) => {
+                  return (
+                    <CategoryInfo
+                      seriaNo={index + 1}
+                      key={val.key}
+                      id={val.key}
+                      name={val.name}
+                      loading={this.state.loading}
+                      onDelete={this.onDeleteCategory}
+                      click={this.handleclick}
+                    />
+                  );
+                })}
+              </table>
+              <hr></hr>
+
+              <div className='flex my-4'>
+                <div className='flex justify-end w-[90%] text-[#9FA2B4] space-x-40'>
+                  <label></label>
+                  <label></label>
+                </div>
+                <img src={arrow1} alt='' className='  ' />
+                <img src={arrow2} alt='' className='  ' />
+              </div>
+            </div>
+          </div>
+        );
+      } else {
+        table = (
+          <div class='d-flex justify-center text-center'>
+            <img
+              src={noProducts}
+              style={{
+                width: "400px",
+                height: "300px",
+                borderRadius: "50%",
+                marginLeft: "33%",
+              }}
+              alt='Product '
+            ></img>
+            <h1 class='text-3xl mt-3'>
+              No Categories found, Start Adding Categories
+            </h1>
+          </div>
+        );
+      }
     }
 
     return (
@@ -157,25 +187,7 @@ class Category extends Component {
               />
             )}
           </div>
-          {this.state.dis ? (
-            <CategoryInfo parent={this.state.Ids} />
-          ) : (
-            <div className={this.state.dis ? "hidden" : "m-5 bg-white"}>
-              <div class='overflow-x-hidden overflow-y-hidden relative shadow-md sm:rounded-lg'>
-                {table}
-                <hr></hr>
-
-                <div className='flex my-4'>
-                  <div className='flex justify-end w-[90%] text-[#9FA2B4] space-x-40'>
-                    <label>Rows per page 8</label>
-                    <label>1-8 of 1240</label>
-                  </div>
-                  <img src={arrow1} alt='' className='  ' />
-                  <img src={arrow2} alt='' className='  ' />
-                </div>
-              </div>
-            </div>
-          )}
+          {table}
         </div>
       </Auxilary>
     );

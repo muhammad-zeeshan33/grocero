@@ -4,7 +4,8 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
-
+import axios from "axios";
+import axios_firebase from "../axios";
 const style = {
   position: "absolute",
   top: "50%",
@@ -19,10 +20,32 @@ const style = {
 
 function UserDisplay(props) {
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { name, email, img, role, contact } = props;
+  const { id, uid, name, email, img, role, contact, loadData } = props;
 
+  const handleDelete = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.post("/api/delete-user/" + uid);
+      axios_firebase
+        .delete(`/shop-owners/${id}.json`)
+        .then((response) => {
+          loadData();
+          props.success("User Deleted Successfully!");
+        })
+        .catch((e) => this.error(e.message));
+      setLoading(false);
+      setDeleteModalOpen(false);
+      loadData();
+    } catch (error) {
+      props.error(error.message);
+      setLoading(false);
+      setDeleteModalOpen(false);
+    }
+  };
   return (
     <Fragment>
       <tbody>
@@ -41,7 +64,15 @@ function UserDisplay(props) {
           <td class='py-4 px-6'>{email}</td>
           <td class='py-4 px-6'>{contact}</td>
 
-          <td class='py-4 px-6'>{role}</td>
+          <td class='py-4 px-6 '>
+            <button
+              type='button'
+              className={` rounded-[100px] text-white bg-{{color}}  px-4 py-1  bg-[#66c934]`}
+            >
+              {role}
+            </button>
+          </td>
+          {/* <td class='py-4 px-6'>{role}</td> */}
           <td class=' flex'>
             <button
               onClick={handleOpen}
@@ -53,6 +84,7 @@ function UserDisplay(props) {
 
             <button
               type='button'
+              onClick={() => setDeleteModalOpen(true)}
               class='text-red-600 bg-white mt-7  font-medium rounded-lg border border-red-600 text-sm px-4 py-2 ml-2 '
             >
               Delete
@@ -96,6 +128,38 @@ function UserDisplay(props) {
           </Box>
         </Fade>
       </Modal>
+
+      <div
+        className={
+          !deleteModalOpen
+            ? "hidden"
+            : "fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center font-Poppins"
+        }
+      >
+        <div className='bg-white p-2 rounded w-4/12'>
+          <div className='flex flex-col items-center pb-10 text-colortxt text-center'>
+            <h5 className='mb-1 text-xl font-medium mt-3'>
+              Are you sure you want to delete this user?
+            </h5>
+            <div className='d-flex'>
+              <button
+                onClick={handleDelete}
+                disabled={loading}
+                className='text-red-600 bg-white mt-7  font-medium rounded-lg border border-red-600 text-sm px-4 py-2 ml-2 '
+              >
+                {loading ? "Deleting..." : "Yes Delete"}
+              </button>
+              <button
+                onClick={() => setDeleteModalOpen(false)}
+                disabled={loading}
+                className='text-[#333] bg-white  border border-[#333] font-medium rounded-lg text-sm px-5 ml-3 py-2.5  mb-2'
+              >
+                Discard
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </Fragment>
   );
 }

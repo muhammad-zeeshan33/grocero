@@ -1,73 +1,19 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { deleteUserById } from "../firebase/firebase-admin-file";
+import { Loader } from "./Loader/Loader";
 import UserDisplay from "./User_Display";
 import arrow1 from "../assets/arrw1.png";
 import arrow2 from "../assets/arrw2.png";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import AddUserModal from "./AddUserModal";
 import axios from "../axios.js";
-
-// import { deleteUserById } from "../firebase/firebase-admin";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Users() {
-  const UsersInfo = [
-    {
-      id: 1,
-      name: "Jason Crejza",
-      username: "Danny_123",
-      Gender: "Male",
-      email: "123@gmail.com",
-      img: "1",
-    },
-    {
-      id: 2,
-      name: "Emily Watson",
-      username: "Danny_123",
-      Gender: "Male",
-      email: "123@gmail.com",
-      img: "5",
-    },
-    {
-      id: 3,
-      name: "Sarah Taylor",
-      username: "Danny_123",
-      Gender: "Male",
-      email: "123@gmail.com",
-      img: "6",
-    },
-    {
-      id: 4,
-      name: "Jeff Kim ",
-      username: "Danny_123",
-      Gender: "Male",
-      email: "123@gmail.com",
-      img: "2",
-    },
-  ];
-
-  (async () => {
-    // const res = await getAuth();
-    // console.log(res);
-  })();
-
   const [users, setUsers] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.get("/shop-owners.json");
-        // console.log(res.data);
-
-        const transformed = Object.keys(res.data).map((key) => {
-          return {
-            ...res.data[key],
-          };
-        });
-        console.log(transformed);
-        setUsers(transformed);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
+    loadData();
   }, []);
 
   const [dis, setdis] = useState(true);
@@ -79,26 +25,79 @@ function Users() {
     setids(Id);
   };
 
-  let mappedUsers = null;
-  if (users) {
-    mappedUsers = users.map((val, id) => {
-      //   const b = val.img;
-      return (
-        <UserDisplay
-          id={val.userId}
-          name={val.name}
-          email={val.email}
-          role={val.role}
-          contact={val.contact}
-          img={require("../assets/avatar.png")}
-          click={handleclick}
-        />
-      );
-    });
-  }
+  const onSuccess = (msg) => toast.success(msg);
+  const onError = (msg) => toast.error(msg);
 
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("/shop-owners.json");
+      // console.log(res.data);
+      if (res.data) {
+        const transformed = Object.keys(res.data).map((key) => {
+          return {
+            key,
+            ...res.data[key],
+          };
+        });
+        setUsers(transformed);
+      } else {
+        setUsers(null);
+      }
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+      setLoading(false);
+    }
+  };
+
+  let mappedUsers = null;
+  if (loading) {
+    mappedUsers = (
+      <>
+        <td></td>
+        <td></td>
+        <td></td>
+        <Loader />
+        <td></td>
+      </>
+    );
+  }
+  if (users) {
+    if (users.length > 0) {
+      mappedUsers = users.map((val, id) => {
+        return (
+          <UserDisplay
+            uid={val.userId}
+            key={val.key}
+            id={val.key}
+            loadData={loadData}
+            name={val.name}
+            success={onSuccess}
+            error={onError}
+            email={val.email}
+            role={val.role}
+            contact={val.contact}
+            img={require("../assets/avatar.png")}
+            click={handleclick}
+          />
+        );
+      });
+    } else {
+      mappedUsers = (
+        <>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td style={{ padding: "20px" }}>No users available</td>
+        </>
+      );
+    }
+  }
   return (
     <Fragment>
+      <ToastContainer />
+
       <div className='font-Poppins'>
         <label className='flex p-8 text-3xl font-semibold'>Users</label>
         <hr />
@@ -114,9 +113,10 @@ function Users() {
 
           {open && (
             <AddUserModal
-              // success={this.onSuccess}
-              // error={this.onError}
+              success={onSuccess}
+              error={onError}
               close={setOpen}
+              loadData={loadData}
             />
           )}
         </div>

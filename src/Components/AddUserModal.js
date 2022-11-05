@@ -27,7 +27,7 @@ const SignupSchema = Yup.object().shape({
     .required("This field is required"),
 });
 
-const AddUserModal = ({ close, success, error }) => {
+const AddUserModal = ({ close, success, error, loadData }) => {
   const [loading, setLoading] = React.useState(false);
 
   const submitHandler = async (values) => {
@@ -51,14 +51,17 @@ const AddUserModal = ({ close, success, error }) => {
         setLoading(false);
         console.log(res);
       } catch (e) {
-        console.log(e, "error in saving user data");
+        console.log(e);
         setLoading(false);
       }
-      console.log(userRes);
+      success("User Created Successfully");
       setLoading(false);
+      close(false);
+      loadData();
     } catch (error) {
-      console.log(error, "error in signup");
+      error(error.message);
       setLoading(false);
+      close(false);
     }
   };
 

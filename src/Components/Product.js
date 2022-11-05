@@ -191,7 +191,7 @@ function Product() {
         <label>Category:</label>
         <select
           style={{ width: "185px", marginLeft: "40px" }}
-          className='bg-white ml-5  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095]  text-sm rounded-lg block w-3/6 p-2.5 '
+          className='bg-white ml-5 mt-3  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333]  text-sm rounded-lg block w-3/6 p-2.5 '
           placeholder='Category'
           required
           name='category'
@@ -209,7 +209,7 @@ function Product() {
         </div>
         <div className='flex flex-col space-y-2 mt-2 text- text-sm'>
           <input
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             required
             name='name'
             value={formData.name}
@@ -217,7 +217,7 @@ function Product() {
           />
           <input
             type='number'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             required
             name='price'
             value={formData.price}
@@ -226,7 +226,7 @@ function Product() {
         </div>
       </div>
       <textarea
-        className='bg-white mt-3 outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full h-[200px] p-2.5'
+        className='bg-white mt-3 outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full h-[200px] p-2.5'
         required
         name='description'
         value={formData.description}
@@ -258,7 +258,7 @@ function Product() {
         <button
           type='submit'
           disabled={uploading}
-          class='text-[#2E2E2E] bg-[#F27AAC]  border  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'
+          class='text-[#fff] bg-[#333]  border  font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'
         >
           {uploading ? "Waiting for upload..." : "Save"}
         </button>
@@ -342,7 +342,7 @@ function Product() {
           <button
             onClick={handleclick}
             type='button'
-            class='text-[#2E2E2E] bg-[#F27AAC]  font-medium rounded-lg text-sm px-3 py-2  space-x-1 m-5 mr-10 '
+            class='text-[#fff] bg-[#333]  font-medium rounded-lg text-sm px-3 py-2  space-x-1 m-5 mr-10 '
           >
             <AddCircleOutlineIcon />
             <label>Add new</label>
@@ -358,7 +358,7 @@ function Product() {
             : "fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center font-Poppins"
         }
       >
-        <div className='bg-[#FFF5F9] p-2 rounded w-4/12'>
+        <div className='bg-[#fff] p-2 rounded w-4/12'>
           <div class='flex justify-between items-start p-4 rounded-t border-b '>
             <h3 class='text-2xl font-semibold text-gray-900 '>Add Product</h3>
             <button

@@ -48,7 +48,7 @@ const OfferCard = (props) => {
 
   return (
     <Auxilary>
-      <div className='flex flex-col items-center justify-center m-3 p-2 bg-[#FFF5F9] rounded-lg border shadow-md  hover:bg-[#ffe9f2] '>
+      <div className='flex flex-col items-center justify-center m-3 p-2 bg-[#fff] rounded-lg border shadow-md  hover:bg-[#f3f3f3] '>
         <div
           className=' '
           onMouseEnter={handleMouseEnter}
@@ -61,7 +61,7 @@ const OfferCard = (props) => {
               </button>
             </div>
           </div>
-          <div className='flex flex-col items-center md:flex-row md:max-w-xl font-Poppins text-[#D27095]'>
+          <div className='flex flex-col items-center md:flex-row md:max-w-xl font-Poppins text-[#333]'>
             <div className='flex flex-col justify-between pl-4 leading-normal'>
               <h5 className='mb-2 text-2xl font-bold  '>{props.title}</h5>
               <p className='font-normal '>
@@ -98,7 +98,7 @@ const OfferCard = (props) => {
               <button
                 onClick={() => deleteOfferHandler(props.id)}
                 disabled={loading}
-                className='text-red-600 bg-white mt-7  font-medium rounded-lg border border-red-600 text-sm px-4 py-2 ml-2 '
+                className='text-[#fff] bg-[#333] mt-7  font-medium rounded-lg border border-black-600 text-sm px-4 py-2.5 ml-2 '
               >
                 {loading ? "Deleting..." : "Yes Delete"}
               </button>

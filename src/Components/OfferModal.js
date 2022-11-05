@@ -120,7 +120,7 @@ class OfferModal extends Component {
         <div>
           <input
             type='text'
-            className='bg-white outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0] placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd] placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Tilte'
             name='title'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -130,7 +130,7 @@ class OfferModal extends Component {
         <div>
           <input
             type='number'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Discount Percentage (i-e 0-99)'
             name='price'
             maxLength={2}
@@ -141,7 +141,7 @@ class OfferModal extends Component {
         <div>
           <input
             type='file'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             onChange={(e) => this.inputChangeHandler(e)}
             required
           />
@@ -159,7 +159,7 @@ class OfferModal extends Component {
         <div className='flex justify-evenly items-center'>
           <label>Type of Discount:</label>
           <select
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095]  text-sm rounded-lg block w-3/6 p-2.5 '
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333]  text-sm rounded-lg block w-3/6 p-2.5 '
             placeholder='Type'
             name='type'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -208,7 +208,7 @@ class OfferModal extends Component {
           role='dialog'
         >
           <div className='relative p-4 w-full max-w-md h-full md:h-auto'>
-            <div className='relative bg-[#FFF5F9] rounded-lg shadow-lg '>
+            <div className='relative bg-[#fff] rounded-lg shadow-lg '>
               <button
                 onClick={() => this.props.close(false)}
                 type='button'

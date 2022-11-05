@@ -114,7 +114,7 @@ class CoupnsModal extends Component {
         <div className='flex gap-2'>
           <input
             type='text'
-            className='bg-white outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0] placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd] placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Tilte'
             name='title'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -122,7 +122,7 @@ class CoupnsModal extends Component {
           />
           <input
             type='text'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Promo Code '
             name='promoCode'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -132,7 +132,7 @@ class CoupnsModal extends Component {
         <div className='flex gap-2'>
           <input
             type='number'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Discount Price '
             name='discountPtg'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -141,7 +141,7 @@ class CoupnsModal extends Component {
           />
           <input
             type='date'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Date '
             name='validTill'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -151,7 +151,7 @@ class CoupnsModal extends Component {
         <div>
           <input
             type='file'
-            className='bg-white  outline-none border border-[#FACFE0] focus:ring-4 focus:ring-[#FACFE0]  placeholder:text-[#D27095] text-sm rounded-lg block w-full p-2.5'
+            className='bg-white  outline-none border border-[#ddd] focus:ring-4 focus:ring-[#ddd]  placeholder:text-[#333] text-sm rounded-lg block w-full p-2.5'
             placeholder='Image '
             name='coupen-image'
             onChange={(e) => this.inputChangeHandler(e)}
@@ -207,7 +207,7 @@ class CoupnsModal extends Component {
           role='dialog'
         >
           <div className='relative p-4 w-full max-w-md h-full md:h-auto'>
-            <div className='relative bg-[#FFF5F9] rounded-lg shadow-lg '>
+            <div className='relative bg-[#fff] rounded-lg shadow-lg '>
               <button
                 onClick={this.props.close}
                 type='button'
@@ -230,7 +230,7 @@ class CoupnsModal extends Component {
                 <span className='sr-only'>Close modal</span>
               </button>
               <div className='py-6 px-6 lg:px-8 text-colortxt'>
-                <h3 className='mb-4 text-xl font-medium text-[#D27095] '>
+                <h3 className='mb-4 text-xl font-medium text-[#333] '>
                   Add Coupons
                 </h3>
                 {modalContent}
