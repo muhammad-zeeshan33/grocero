@@ -11,8 +11,10 @@ import Login from "../Components/Auth/Login";
 import Auxilary from "../hoc/Auxilary";
 import authContext from "../contexts/authContext";
 import Forgetpassword from "../Components/Forgetpassword";
+import Shops from "../Components/Shops";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ShopInfo from "../Components/ShopInfo/ShopInfo";
 
 const BaseApp = (props) => {
   const auth = useContext(authContext);
@@ -45,6 +47,8 @@ const BaseApp = (props) => {
               <Route exact path='/Offers' element={<Offers />} />
               <Route exact path='/Coupons' element={<Coupons />} />
               <Route exact path='/User' element={<Users />} />
+              <Route exact path='/Shops' element={<Shops />} />
+              <Route exact path='/Shop' element={<ShopInfo />} />
             </Routes>
           </div>
         </Router>

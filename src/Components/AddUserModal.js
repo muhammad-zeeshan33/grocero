@@ -45,6 +45,11 @@ const AddUserModal = ({ close, success, error, loadData }) => {
           email: values.email,
           contact: values.contact,
           role: "shopowner",
+          shop: {
+            shopTitle: "Grocero Default Shop",
+            shopDescription: "Grocero Default Shop Description",
+            shopImgUrl: "",
+          },
           userId: userRes.data.localId,
         };
         const res = await axios.post("/shop-owners.json", data);

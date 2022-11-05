@@ -56,26 +56,32 @@ class App extends Component {
         axios_firebase
           .get(`/shop-owners.json`)
           .then((response) => {
-            const transformed = Object.keys(response.data).map((key) => {
-              return {
-                key,
-                ...response.data[key],
-              };
-            });
-
-            // console.log(transformed);
-            const user = transformed.filter((user) => {
-              // console.log("user uid", user.uid);
-              // console.log("res uid", res.user.uid);
-              return user.userId == res.user.uid;
-            });
-            if (user.length == 0) {
-              this.setState({
-                role: "admin",
+            if (response.data) {
+              const transformed = Object.keys(response.data).map((key) => {
+                return {
+                  key,
+                  ...response.data[key],
+                };
               });
+
+              // console.log(transformed);
+              const user = transformed.filter((user) => {
+                // console.log("user uid", user.uid);
+                // console.log("res uid", res.user.uid);
+                return user.userId == res.user.uid;
+              });
+              if (user.length == 0) {
+                this.setState({
+                  role: "admin",
+                });
+              } else {
+                this.setState({
+                  role: "shopOwner",
+                });
+              }
             } else {
               this.setState({
-                role: "shopOwner",
+                role: "admin",
               });
             }
           })

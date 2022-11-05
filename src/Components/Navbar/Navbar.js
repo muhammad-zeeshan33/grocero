@@ -4,6 +4,7 @@ import PriceChangeIcon from "@mui/icons-material/PriceChange";
 import Category from "@mui/icons-material/Category";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
+import Store from "@mui/icons-material/Store";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import "./Navbar.css";
@@ -70,9 +71,21 @@ function Navbar() {
                   >
                     <LocalOfferIcon className='mt-4' /> <li>Offers</li>
                   </NavLink>
+                  <NavLink
+                    to='/Shops'
+                    className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'
+                  >
+                    <Store className='mt-4' /> <li>Shops</li>
+                  </NavLink>
                 </>
               ) : (
                 <>
+                  <NavLink
+                    to='/Shop'
+                    className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'
+                  >
+                    <Store className='mt-4' /> <li>Shop Details</li>
+                  </NavLink>
                   <NavLink
                     to='/Products'
                     className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'

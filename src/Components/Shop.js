@@ -12,13 +12,13 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "#FFF",
+  bgcolor: "#FFF5F9",
   borderRadius: "8px",
   boxShadow: 24,
   p: 4,
 };
 
-function CategoryInfo(props) {
+function Shop(props) {
   const [open, setOpen] = React.useState(false);
   const [openDelModal, setOpenDelModal] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -26,7 +26,7 @@ function CategoryInfo(props) {
 
   const handleDelModalOpen = () => setOpenDelModal(true);
   const handleDelModalClose = () => setOpenDelModal(false);
-  const { name } = props;
+  const { name, description, owner } = props;
   const [loading, setLoading] = React.useState(false);
 
   const deleteCategoryHanlder = (id) => {
@@ -40,6 +40,8 @@ function CategoryInfo(props) {
         <tr class='bg-white border-b  dark:border-gray-700'>
           <td class='py-4 px-6'>{props.seriaNo}</td>
           <td class='py-4 px-6'>{name}</td>
+          <td class='py-4 px-6'>{description}</td>
+          <td class='py-4 px-6'>{owner}</td>
           <td class=' flex'>
             <button
               onClick={handleOpen}
@@ -121,4 +123,4 @@ function CategoryInfo(props) {
   );
 }
 
-export default CategoryInfo;
+export default Shop;
