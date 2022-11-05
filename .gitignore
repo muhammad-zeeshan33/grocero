@@ -3,3 +3,4 @@
 .netlify
 package-lock.json
 /backend
+/build
