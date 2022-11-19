@@ -5,6 +5,7 @@ import Category from "@mui/icons-material/Category";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import Store from "@mui/icons-material/Store";
+import { Group, AllInbox, PeopleOutline } from "@mui/icons-material";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import "./Navbar.css";
@@ -56,8 +57,8 @@ function Navbar() {
                     to='/User'
                     className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'
                   >
-                    <PersonIcon className='mt-4' />
-                    <li>Users </li>
+                    <Group className='mt-4' />
+                    <li>Sellers </li>
                   </NavLink>
                   <NavLink
                     to='/Category'
@@ -70,6 +71,18 @@ function Navbar() {
                     className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'
                   >
                     <LocalOfferIcon className='mt-4' /> <li>Offers</li>
+                  </NavLink>
+                  <NavLink
+                    to='/Orders'
+                    className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'
+                  >
+                    <AllInbox className='mt-4' /> <li>Orders</li>
+                  </NavLink>
+                  <NavLink
+                    to='/Customers'
+                    className='flex  mr-4 pb-3 rounded-md px-3 space-x-4 space-y-4'
+                  >
+                    <PeopleOutline className='mt-4' /> <li>Customers</li>
                   </NavLink>
                   <NavLink
                     to='/Shops'

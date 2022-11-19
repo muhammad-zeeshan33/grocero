@@ -15,6 +15,8 @@ import Shops from "../Components/Shops";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ShopInfo from "../Components/ShopInfo/ShopInfo";
+import Orders from "../Components/Orders";
+import Customers from "../Components/Customers";
 
 const BaseApp = (props) => {
   const auth = useContext(authContext);
@@ -49,6 +51,8 @@ const BaseApp = (props) => {
               <Route exact path='/User' element={<Users />} />
               <Route exact path='/Shops' element={<Shops />} />
               <Route exact path='/Shop' element={<ShopInfo />} />
+              <Route exact path='/Orders' element={<Orders />} />
+              <Route exact path='/Customers' element={<Customers />} />
             </Routes>
           </div>
         </Router>

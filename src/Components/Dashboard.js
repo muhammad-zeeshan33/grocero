@@ -36,6 +36,10 @@ function Dashboard() {
 
   return (
     <>
+      <div className='font-Poppins '>
+        <label className='flex p-8 text-3xl font-semibold'>Dashboard</label>
+        <hr />
+      </div>
       <div className='flex flex-col'>
         <div className='  flex gap-10 justify-evenly p-[40px] font-Poppins '>
           <div className='bg-white rounded p-5 flex items-start shadow w-full '>
