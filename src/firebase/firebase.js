@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCdIyQ_cKB8epfUnAQ3d9Bl64gxrdLv70Q",
-  authDomain: "grocero-app-f5d39.firebaseapp.com",
-  projectId: "grocero-app-f5d39",
-  storageBucket: "grocero-app-f5d39.appspot.com",
-  messagingSenderId: "507475328831",
-  appId: "1:507475328831:web:9ce50aa4870d84563a5d8a",
-  measurementId: "G-CSRFFR47V1",
+  apiKey: "AIzaSyBgRG2_bXcBjKH9I5u1-SE0BEUTntnPC2Y",
+  authDomain: "grocero-c6d7f.firebaseapp.com",
+  projectId: "grocero-c6d7f",
+  storageBucket: "grocero-c6d7f.appspot.com",
+  messagingSenderId: "656914242084",
+  appId: "1:656914242084:web:97629ba3fc007cf1a8d6b1",
+  measurementId: "G-P4DY3896FW",
 };
 
 // Initialize Firebase

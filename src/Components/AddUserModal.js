@@ -35,7 +35,7 @@ const AddUserModal = ({ close, success, error, loadData }) => {
     setLoading(true);
     try {
       const userRes = await axios.post(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCdIyQ_cKB8epfUnAQ3d9Bl64gxrdLv70Q",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBgRG2_bXcBjKH9I5u1-SE0BEUTntnPC2Y",
         { email: values.email, password: values.password }
       );
 
